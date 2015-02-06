@@ -3,14 +3,72 @@
   <head>
     <title>Socket.IO chat</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/js/game.js"></script>
+    <div class="container">
+      <div class="sub-container">
+        <div class="tile-container backdrop">
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+        </div>
+
+        <div class="button-container backdrop">
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <div class="gui-container backdrop">
+          <div class="profile"></div>
+            <div class="log-container">
+            <ul>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+              <li class="log"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <div class="option-container">
+          <div class="option-wrapper">
+            <div class="option backdrop"></div>
+          </div>
+          <div class="option-wrapper">
+            <div class="option backdrop"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
