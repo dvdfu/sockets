@@ -2,73 +2,64 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/game.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
   <body>
     <div class="container">
       <div class="sub-container">
-        <div class="tile-container backdrop">
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-          <div class="tile-wrapper">
-            <div class="tile"></div>
-          </div>
-        </div>
+        <div class="game-container">
 
-        <div class="button-container backdrop">
-        </div>
-      </div>
-
-      <div class="sub-container">
-        <div class="gui-container backdrop">
-          <div class="profile"></div>
-            <div class="log-container">
-            <ul>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-              <li class="log"></li>
-            </ul>
+          <div class="tile-wrapper">
+            <div class="tile">
+              <svg class="shape-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <circle class="shape color-yellow-shape" cx="50" cy="50" r="50"></circle>
+              </svg>
+            </div>
           </div>
-        </div>
-      </div>
-
-        <div class="option-container">
-          <div class="option-wrapper">
-            <div class="option backdrop"></div>
+          <div class="tile-wrapper">
+            <div class="tile">
+              <svg class="shape-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <rect class="shape color-yellow-shape" x="0" y="0" width="100" height="100"/>
+              </svg>
+            </div>
           </div>
-          <div class="option-wrapper">
-            <div class="option backdrop"></div>
+          <div class="tile-wrapper">
+            <div class="tile">
+              <svg class="shape-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon class="shape color-yellow-shape" points="50,0 0,100 100,100"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile">
+              <svg class="shape-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon class="shape color-yellow-shape" points="50,0 100,50 50,100 0,50"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+          <div class="tile-wrapper">
+            <div class="tile"></div>
+          </div>
+
+          <div class="button-wrapper">
+            <div class="button"></div>
           </div>
         </div>
       </div>
+      <div class="sub-container"></div>
     </div>
   </body>
 </html>
