@@ -6,14 +6,12 @@
 
 body {
 	font-family: 'Lato', sans-serif;
-	background-color: #123;
+	background-color: #223;
 }
 
 .container {
 	position: absolute;
 	width: 100%;
-	padding: 20px;
-	/*overflow: hidden;*/
 }
 
 .main-container {
@@ -34,15 +32,23 @@ body {
 	line-height: 100px;
 }
 
+.tile-row .text {
+	color: #fff;
+	font-weight: bold;
+	font-size: 120px;
+	line-height: 120px;
+}
+
 .number .text {
 	font-weight: bold;
 	font-size: 100px;
 	line-height: 100px;
-	color: #da4;
+	color: #668;
+	margin-top: 10px;
 }
 
 .text {
-	color: #123;
+	color: #223;
 	font-weight: normal;
 	font-size: 40px;
 	line-height: 40px;
@@ -63,16 +69,16 @@ body {
 
 .number {
 	background-color: #fff;
-	color: #123;
+	color: #223;
 	width: 180px;
 	height: 290px;
 	padding: 75px 0;
 	text-align: center;
 	border-radius: 10px;
+	box-shadow: 0 10px #000;
 }
 
 .number:first-child {
-	/*margin-top: 120px;*/
 	margin-bottom: 20px;
 }
 
@@ -88,6 +94,7 @@ body {
 	margin: 0;
 	padding: 20px;
 	border-radius: 10px;
+	box-shadow: 0 10px #000;
 }
 
 .tile-row {
@@ -114,6 +121,11 @@ body {
 	margin-right: 0;
 }
 
+.tile-text {
+	margin-top: 5px;
+	/*text-shadow: 0 7px #223;*/
+}
+
 /* Log */
 
 .log-container {
@@ -121,7 +133,7 @@ body {
 	border-radius: 10px;
 	height: 600px;
 	overflow: hidden;
-	/*position: relative;*/
+	box-shadow: 0 10px #000;
 }
 
 .log-head {
@@ -129,7 +141,7 @@ body {
 	width: 100%;
 	height: 100px;
 	padding: 10px;
-	box-shadow: 0 10px 20px #123;
+	box-shadow: 0 10px 20px #223;
 	position: relative;
 }
 
@@ -163,7 +175,7 @@ body {
 }
 
 .log-item {
-	background-color: #abb;
+	background-color: #edd;
 	width: 100%;
 	height: 100px;
 	padding: 20px;
@@ -173,19 +185,21 @@ body {
 /* Menu */
 
 .menu-container {
-	height: 80px;
+	height: 100px;
 }
 
 .menu-item {
-	width: 390px;
+	width: 253.33px;
 	height: 100%;
 	float: left;
 	background-color: #fff;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 28px 20px;
 	text-align: center;
+	margin-right: 20px;
+	box-shadow: 0 10px #000;
 }
 
-.menu-item:first-child {
-	margin-right: 20px;
+.menu-item:last-child {
+	margin-right: 0;
 }
