@@ -1,9 +1,9 @@
-function Room(id, tiles, answers) {
+function Room(id) {
     this.id = id;
     this.players = {};
     this.gamePhase = 'setupPhase'; // can be either setupPhase or playPhase
-    this.tiles = tiles;
-    this.answers = answers;
+    this.tiles = [];
+    this.answers = [];
     this.history = [];
 };
 
@@ -20,20 +20,20 @@ Room.prototype.match = function() {
 
 Room.prototype.addPlayer = function(player) {
     if(this.players[player.username]) {
-        this.players[player.username].socketId = player.socketId;
+        this.players[player.username].active = true;
     } else {
         this.players[player.username] = {
             score: 0,
             thumbnail: player.thumbnail,
             kikUser: player.kikUser,
-            socketId: player.socketId,
+            active: true,
             ready: false
         };
     }
 };
 
 Room.prototype.removePlayer = function(player) {
-    this.players[player.username].socketId = null;
+    this.players[player.username].active = false;
 };
 
 Room.prototype.checkTiles = function(player, tiles) {
@@ -51,7 +51,7 @@ Room.prototype.checkTiles = function(player, tiles) {
 // Array of users and their scores sorted by score decending
 Room.prototype.scores = function() {
     var scores = [];
-    for (var player in this.players) {
+    for(var player in this.players) {
         if(this.players.hasOwnProperty(player)){
             scores.push([player, this.players[player]]);
         }
@@ -60,26 +60,51 @@ Room.prototype.scores = function() {
     return scores;
 };
 
-// Sets player ready attribute, returns whether all players are ready
+// Sets player ready attribute
 Room.prototype.playerReady = function(player) {
     this.players[player.username].ready = true;
-    for (var playerName in this.players) {
-        if(this.players.hasOwnProperty(playerName) && !this.players[playerName].ready){
+};
+
+Room.prototype.arePlayersReady = function() {
+    for(var playerName in this.players) {
+        if(!this.players[playerName].ready && this.players[playerName].active) {
             return false;
         }
     }
     return true;
-};
+}
 
-Room.prototype.setupPhase = function() {
+Room.prototype.prepareNewMatch = function() {
     // clean up previous game
+
+    this.gamePhase = 'setupPhase';
+    for(var playerName in this.players) {
+        this.players[playerName].ready = false;
+    }
 };
 
-Room.prototype.playPhase = function(tiles, answers) {
+Room.prototype.startNewMatch = function(tiles, answers) {
+    var purgeArr = [];
+    for(var playerName in this.players) {
+        if(!this.players[playerName].active){
+            purgeArr.push(playerName);
+        }
+    }
+    for(var i = 0; i < purgeArr.length; i++) {
+        delete this.players[purgeArr[i]];
+    }
+
+    for(var playerName in this.players) {
+        if(this.players[playerName].active){
+            this.players[playerName].ready = true;
+        }
+    }
+
+    this.gamePhase = 'playPhase';
     this.tiles = tiles;
     this.answers = answers;
-    this.gamePhase = 'playPhase';
-};
+    this.history = [];
+}
 
 Room.prototype.setTiles = function(tiles) {
     this.tiles = tiles;
