@@ -48,9 +48,9 @@ function loadTiles(boardJSON) {
 
 		var color;
 		switch(tiles[i].color) {
-			case 0: color = '#f34'; break;
-			case 1: color = '#fc3'; break;
-			case 2: color = '#33f'; break;
+			case 0: color = '#f45'; break;
+			case 1: color = '#fb3'; break;
+			case 2: color = '#38f'; break;
 		}
 		$tile.style.backgroundColor = color;
 		$tile.appendChild($tileText);
