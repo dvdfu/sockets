@@ -87,20 +87,36 @@ body {
 }
 
 .tile-container {
+	position: relative;
 	background-color: #fff;
 	float: left;
 	width: 600px;
 	height: 600px;
 	margin: 0;
-	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 10px #000;
+	overflow: hidden;
+}
+
+.tile-container .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+    z-index: 10;
+    top: 0;
+	background-color: #000;
+	opacity: 0;
 }
 
 .tile-row {
 	width: 560px;
 	height: 173.33px;
 	margin-bottom: 20px;
+	margin-left: 20px;
+}
+
+.tile-row:first-child {
+	margin-top: 20px;
 }
 
 .tile {
