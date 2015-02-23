@@ -30,6 +30,7 @@ body {
 	font-weight: bold;
 	font-size: 100px;
 	line-height: 100px;
+	text-shadow: 0 10px #000;
 }
 
 .tile-row .text {
@@ -124,7 +125,6 @@ body {
 	float: left;
 	background-color: #abc;
 	border-radius: 10px;
-
 	width: 173.33px;
 	height: 173.33px;
 	margin-right: 20px;
@@ -139,7 +139,6 @@ body {
 
 .tile-text {
 	margin-top: 5px;
-	/*text-shadow: 0 7px #345;*/
 }
 
 /* Log */
