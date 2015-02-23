@@ -4,7 +4,8 @@ var express     = require('express'),
     io          = require('socket.io')(http),
     uuid        = require('node-uuid'),
     faker       = require('faker'),
-    Room        = require('./room.js',
+    Room        = require('./room.js'),
+    Board       = require('./board.js'),
     _           = require('underscore');
 
 app.use(express.static(__dirname + '/public'));
@@ -14,12 +15,15 @@ app.get('/', function(req, res) {
 });
 
 var players = {},
-    rooms = {}; //gamePhase is a property of each room
+    rooms = {}, //gamePhase is a property of each room
+    board = new Board();
 
 function remove(socket) {
-    var room = rooms[socket.roomId];
-    room.removePlayer(players[socket.id]);
-    io.to(socket.roomId).emit('playerLeft', players[socket.id].username);
+    if(socket.roomId) {
+        var room = rooms[socket.roomId];
+        room.removePlayer(players[socket.id]);
+        io.to(socket.roomId).emit('playerLeft', players[socket.id].username);
+    }
     delete players[socket.id];
     // rooms handle their own cleaning up at the end of each round
 }
@@ -27,7 +31,7 @@ function remove(socket) {
 io.on('connection', function(socket) {
     console.log('a user connected');
 
-    socket.on('connect', function(user) {
+    socket.on('userConnect', function(user) {
         //load player information from database ie. purchased themes, current theme
         if(user.kikUser) {
             players[socket.id] = {
@@ -43,7 +47,7 @@ io.on('connection', function(socket) {
             };
         }
 
-        socket.emit('connected', players[socket.id]);
+        socket.emit('userConnected', players[socket.id]);
     });
 
     socket.on('createRoom', function() {
@@ -117,12 +121,13 @@ io.on('connection', function(socket) {
     });
 
     // Once all players are ready, start the next match
-    socket.on('ready', function() {
+    socket.on('playerReady', function() {
         io.to(socket.roomId).emit('playerReadied', players[socket.id].username);
         var room = rooms[socket.roomId];
         room.playerReady(players[socket.id])
         if(room.arePlayersReady()) {
-            room.startNewMatch();
+            board.generateNewBoard();
+            room.startNewMatch(board.tiles, board.answers);
             // send match information to players
             var match = room.match();
             io.to(socket.roomId).emit('joinedRoom', match);

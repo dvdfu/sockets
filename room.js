@@ -9,6 +9,7 @@ function Room(id) {
 
 Room.prototype.match = function() {
     var match = {
+        id: this.id,
         players: this.players,
         gamePhase: this.gamePhase,
         tiles: this.tiles,
@@ -16,7 +17,7 @@ Room.prototype.match = function() {
         history: this.history
     };
     return match;
-}
+};
 
 Room.prototype.addPlayer = function(player) {
     if(this.players[player.username]) {
@@ -33,7 +34,9 @@ Room.prototype.addPlayer = function(player) {
 };
 
 Room.prototype.removePlayer = function(player) {
-    this.players[player.username].active = false;
+    if(this.players[player.username]) {
+        this.players[player.username].active = false;
+    }
 };
 
 Room.prototype.checkTiles = function(player, tiles) {
